@@ -1,0 +1,32 @@
+describe('My second test', function() {
+    it('Login as Gazda!', () => {
+    // Given (Arrange - visit the web page)
+    cy.visit('https://dev.enigmata.pl') 
+    // When (Act - interact with that element)
+    cy.contains('Zaloguj').click({force: true})
+    cy.pause()
+    // Then (Assert - make an assertion about page content)
+    cy.get('button.close').debug().click({multiple: true, force: true})
+    cy.pause()
+    // When (Act - interact with that element)
+    cy.contains('Zaloguj').click({force: true})
+    // Then (Assert - make an assertion about page content)
+    cy.get('h2').should('contain','Logowanie')
+    cy.pause()
+    // When (Act - interact with that element)
+    cy.contains('Zapomniałem hasła').click()
+    // Then (Assert - make an assertion about page content)
+    cy.get('h2').should('contain','Zapomniałem hasła')
+    cy.pause()
+    // When (Act - interact with that element)
+    cy.get('button.close').debug().click({multiple: true, force: true})
+    cy.pause()
+    cy.contains('Zaloguj').click({force: true})
+    // Then (Assert - make an assertion about page content)
+    cy.get('#loginText').type('gazda.edu@gmail.com')
+    cy.get('#passwordText').type('Test1234{enter}')
+    
+    })
+
+
+})
